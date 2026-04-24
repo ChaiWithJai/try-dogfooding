@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+.playwright-cli/
+.env
+.env.local
+cli/dist/
+source-maps-downloader/
+.netlify/
