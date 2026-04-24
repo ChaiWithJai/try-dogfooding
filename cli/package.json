@@ -1,0 +1,55 @@
+{
+  "name": "@trydogfooding/cli",
+  "version": "0.1.0",
+  "description": "Dogfood CLI — Build the software you wish existed.",
+  "type": "module",
+  "license": "AGPL-3.0-or-later",
+  "author": "Jai Bhagat <jai@trydogfooding.com>",
+  "homepage": "https://trydogfooding.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trydogfooding/cli.git"
+  },
+  "bin": {
+    "dogfood": "./dist/bin/dogfood.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/ bin/ --ext .ts",
+    "format": "prettier --write 'src/**/*.ts' 'bin/**/*.ts'",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "js-yaml": "^4.1.0",
+    "ora": "^8.2.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^22.15.0",
+    "eslint": "^9.18.0",
+    "prettier": "^3.5.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.1.0"
+  }
+}
