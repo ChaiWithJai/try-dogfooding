@@ -13,6 +13,9 @@
   "bin": {
     "dogfood": "./dist/bin/dogfood.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.js",

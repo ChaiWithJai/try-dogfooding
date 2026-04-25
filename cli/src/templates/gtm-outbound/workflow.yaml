@@ -1,0 +1,20 @@
+name: gtm-outbound
+description: Draft personalized sales outreach based on CRM context.
+persona: gtm
+stack_requires: ["hubspot", "linkedin"]
+claude_code_config:
+  allowed_tools: ["*"]
+  max_tokens_per_run: 50000
+  timeout_seconds: 120
+inputs:
+  - name: list
+    description: CSV list of targets
+    default: data/targets.csv
+outputs:
+  - name: outreach-drafts
+    destination: stdout
+    format: markdown
+  - name: outreach-drafts-file
+    destination: outputs/drafts.md
+    format: markdown
+schedule: null

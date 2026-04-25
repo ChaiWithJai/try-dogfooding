@@ -28,3 +28,4 @@ dist-ssr
 
 # Local browser automation artifacts
 .playwright-cli
+.vercel

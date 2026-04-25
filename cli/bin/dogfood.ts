@@ -17,6 +17,7 @@ import { registerDoctorCommand } from "../src/commands/doctor.js";
 import { registerRunCommand } from "../src/commands/run.js";
 import { registerHistoryCommand } from "../src/commands/history.js";
 import { registerWorkflowListCommand } from "../src/commands/workflow-list.js";
+import { registerIntegrationsCommand } from "../src/commands/integrations.js";
 
 const VERSION = "0.1.0";
 
@@ -55,6 +56,7 @@ registerDoctorCommand(program);
 registerRunCommand(program);
 registerHistoryCommand(program);
 registerWorkflowListCommand(program);
+registerIntegrationsCommand(program);
 
 // Global error handler
 process.on("uncaughtException", (err) => {

@@ -277,7 +277,7 @@ function App() {
             </div>
 
             <div className="hero-section__media">
-              <img src={siteContent.hero.image} alt="Operator at a desk" />
+              <img src={siteContent.hero.image} alt="Professor Jai teaching in a classroom" />
             </div>
           </section>
 
@@ -404,7 +404,7 @@ function App() {
 
           <section className="section section--split-content">
             <div className="art-card">
-              <img src={siteContent.stack.image} alt="Starter kit illustration" />
+              <img src={siteContent.stack.image} alt="School library and tech lab" />
             </div>
 
             <div className="copy-card">
@@ -452,14 +452,14 @@ function App() {
               </div>
 
               <div className="art-card art-card--compact">
-                <img src={siteContent.pricing.image} alt="Pricing illustration" />
+                <img src={siteContent.pricing.image} alt="Principal Biscuit's office" />
               </div>
             </div>
           </section>
 
           <section className="section section--split-content">
             <div className="art-card art-card--wide">
-              <img src={siteContent.builder.image} alt="Builder illustration" />
+              <img src={siteContent.builder.image} alt="Professor Jai grading at night" />
             </div>
 
             <div className="copy-card">
@@ -487,7 +487,7 @@ function App() {
 
             <div className="meet-jai-layout">
               <div className="meet-jai-photo">
-                <img src={siteContent.meetJai.image} alt="Jai — creator of TryDogfooding" />
+                <img src={siteContent.meetJai.image} alt="Professor Jai — creator of TryDogfooding" />
               </div>
 
               <div className="meet-jai-content">
@@ -618,7 +618,7 @@ function App() {
           <section className="section cta-section" id="cta">
             <div className="cta-card">
               <div className="cta-card__media">
-                <img src={siteContent.cta.image} alt="Starter kit prompt illustration" />
+                <img src={siteContent.cta.image} alt="Graduation ceremony" />
               </div>
 
               <div className="cta-card__content">

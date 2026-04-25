@@ -99,7 +99,7 @@ export function registerRunCommand(program: Command): void {
         }
 
         // Step 4: Assemble the prompt
-        const assembledPrompt = assemblePrompt(workflowConfig, claudeMd, prompts);
+        const assembledPrompt = assemblePrompt(workflowConfig, claudeMd, prompts, workflowName);
 
         // Dry run — just show the prompt
         if (options.dryRun) {
@@ -120,27 +120,41 @@ export function registerRunCommand(program: Command): void {
         const spinner = createSpinner(`Running workflow ${chalk.bold(workflowName)}...`);
         spinner.start();
 
-        const result = await executeWithClaude({
-          prompt: assembledPrompt,
-          allowedTools: workflowConfig.claude_code_config.allowed_tools,
-          maxTokens: workflowConfig.claude_code_config.max_tokens_per_run,
-          timeoutSeconds: workflowConfig.claude_code_config.timeout_seconds,
-          workingDirectory: workflowDir,
-          runId,
-        });
-
-        // Step 6: Save output
         const outputDir = path.join(
           workflowDir,
           "outputs",
           new Date().toISOString().replace(/[:.]/g, "-"),
         );
-        await fs.mkdir(outputDir, { recursive: true });
-        await fs.writeFile(
-          path.join(outputDir, "output.md"),
-          result.output,
-          "utf-8",
-        );
+
+        let result: Awaited<ReturnType<typeof executeWithClaude>>;
+        let errorToThrow: unknown;
+
+        try {
+          result = await executeWithClaude({
+            prompt: assembledPrompt,
+            allowedTools: workflowConfig.claude_code_config.allowed_tools,
+            maxTokens: workflowConfig.claude_code_config.max_tokens_per_run,
+            timeoutSeconds: workflowConfig.claude_code_config.timeout_seconds,
+            workingDirectory: workspacePath,
+            runId,
+          });
+
+          // Step 6: Save output
+          await fs.mkdir(outputDir, { recursive: true });
+          await fs.writeFile(
+            path.join(outputDir, "output.md"),
+            result.output,
+            "utf-8",
+          );
+        } catch (err) {
+          errorToThrow = err;
+          result = {
+            output: "",
+            durationMs: Date.now() - new Date(startedAt).getTime(),
+            status: "failure",
+            error: err instanceof Error ? err.message : String(err),
+          };
+        }
 
         // Step 7: Record in history
         const record: RunRecord = {
@@ -185,6 +199,10 @@ export function registerRunCommand(program: Command): void {
           console.log("");
         }
 
+        if (errorToThrow) {
+          throw errorToThrow;
+        }
+
         if (result.status !== "success") {
           process.exitCode = 1;
         }
@@ -203,6 +221,7 @@ function assemblePrompt(
   config: WorkflowConfig,
   claudeMd: string,
   prompts: string[],
+  workflowName: string,
 ): string {
   const parts: string[] = [];
 
@@ -224,7 +243,8 @@ function assemblePrompt(
   if (config.outputs.length > 0) {
     parts.push("\n## Expected outputs\n");
     for (const output of config.outputs) {
-      parts.push(`- **${output.name}**: ${output.format} → ${output.destination}`);
+      const dest = output.destination === "stdout" ? "stdout" : `workflows/${workflowName}/${output.destination}`;
+      parts.push(`- **${output.name}**: ${output.format} → ${dest}`);
     }
   }
 

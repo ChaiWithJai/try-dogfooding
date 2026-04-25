@@ -1,0 +1,20 @@
+name: marketing-copy
+description: Generate ad copy variants for social platforms.
+persona: marketing
+stack_requires: ["meta-ads"]
+claude_code_config:
+  allowed_tools: ["*"]
+  max_tokens_per_run: 50000
+  timeout_seconds: 120
+inputs:
+  - name: specs
+    description: Product features and benefits
+    default: data/specs.md
+outputs:
+  - name: ad-variants
+    destination: stdout
+    format: markdown
+  - name: ad-variants-file
+    destination: outputs/variants.md
+    format: markdown
+schedule: null

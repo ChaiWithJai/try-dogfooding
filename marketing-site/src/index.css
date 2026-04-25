@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg: #efe1c5;
-  --paper: rgba(255, 251, 244, 0.96);
-  --paper-strong: #fffdf8;
-  --taskbar: rgba(247, 239, 223, 0.96);
-  --line: rgba(67, 49, 22, 0.24);
-  --line-strong: rgba(67, 49, 22, 0.38);
-  --ink: #2a2418;
-  --muted: #625a49;
-  --muted-soft: #8f856e;
-  --orange: #f6a61e;
-  --orange-deep: #d28610;
-  --blue: #3476ff;
-  --blue-soft: rgba(52, 118, 255, 0.12);
+  --bg: #2d4a3e;
+  --paper: rgba(35, 65, 52, 0.96);
+  --paper-strong: #1e3a2f;
+  --taskbar: rgba(30, 55, 44, 0.96);
+  --line: rgba(200, 220, 200, 0.2);
+  --line-strong: rgba(200, 220, 200, 0.35);
+  --ink: #e8eae2;
+  --muted: #9aab9e;
+  --muted-soft: #7a9a88;
+  --orange: #f5c842;
+  --orange-deep: #e0a820;
+  --blue: #5ac4ff;
+  --blue-soft: rgba(90, 196, 255, 0.15);
   --shadow:
-    0 24px 60px rgba(74, 49, 16, 0.12),
-    0 6px 18px rgba(74, 49, 16, 0.1);
+    0 24px 60px rgba(0, 0, 0, 0.25),
+    0 6px 18px rgba(0, 0, 0, 0.18);
   --font-body: 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
   color: var(--ink);
@@ -29,22 +29,22 @@
 
 /* Dark mode overrides */
 .site-shell--dark {
-  --bg: #1a1814;
-  --paper: rgba(30, 28, 24, 0.97);
-  --paper-strong: #252320;
-  --taskbar: rgba(35, 32, 27, 0.97);
-  --line: rgba(200, 190, 170, 0.18);
-  --line-strong: rgba(200, 190, 170, 0.28);
-  --ink: #e8e0d0;
-  --muted: #a09888;
-  --muted-soft: #6e6558;
-  --orange: #f6a61e;
-  --orange-deep: #e89a10;
-  --blue: #5a94ff;
-  --blue-soft: rgba(90, 148, 255, 0.15);
+  --bg: #162822;
+  --paper: rgba(20, 36, 30, 0.97);
+  --paper-strong: #0f2019;
+  --taskbar: rgba(18, 32, 26, 0.97);
+  --line: rgba(160, 200, 175, 0.15);
+  --line-strong: rgba(160, 200, 175, 0.24);
+  --ink: #d4ddd6;
+  --muted: #8a9e90;
+  --muted-soft: #607a68;
+  --orange: #f5c842;
+  --orange-deep: #d4a01a;
+  --blue: #5ac4ff;
+  --blue-soft: rgba(90, 196, 255, 0.12);
   --shadow:
-    0 24px 60px rgba(0, 0, 0, 0.35),
-    0 6px 18px rgba(0, 0, 0, 0.25);
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    0 6px 18px rgba(0, 0, 0, 0.3);
   color: var(--ink);
   background-color: var(--bg);
   background-image: none;
@@ -52,12 +52,12 @@
 
 .site-shell--dark .window-header,
 .site-shell--dark .window-toolbar {
-  background: rgba(40, 37, 32, 0.92);
+  background: rgba(18, 32, 26, 0.92);
 }
 
 .site-shell--dark .code-block {
-  background: #151310;
-  border-color: rgba(200, 190, 170, 0.12);
+  background: #0a1810;
+  border-color: rgba(160, 200, 175, 0.12);
 }
 
 .site-shell--dark .feature-tab.is-active {
@@ -118,7 +118,7 @@ img {
 }
 
 ::selection {
-  background: rgba(246, 166, 30, 0.28);
+  background: rgba(245, 200, 66, 0.3);
 }
 
 #root {
@@ -131,7 +131,7 @@ img {
   padding: 96px 16px 240px;
   overflow-x: clip;
   background-color: var(--bg);
-  background-image: url('https://res.cloudinary.com/dmukukwp6/image/upload/texture_tan_9608fcca70.png');
+  background-image: none;
   background-size: 260px 260px;
   transition: background-color 0.3s, color 0.3s;
 }
@@ -215,7 +215,7 @@ img {
   justify-content: center;
   min-height: 34px;
   padding: 0 16px;
-  border: 1px solid #9c650e;
+  border: 1px solid #b8901a;
   border-radius: 8px;
   background: var(--orange);
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.18);
@@ -232,7 +232,7 @@ img {
   height: 26px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.42);
+  background: rgba(200, 220, 200, 0.15);
 }
 
 .taskbar__count {
@@ -328,7 +328,7 @@ img {
   gap: 12px;
   padding: 10px 14px;
   border-bottom: 1px solid var(--line);
-  background: rgba(241, 234, 214, 0.86);
+  background: rgba(28, 52, 42, 0.86);
 }
 
 .window-header {
@@ -484,7 +484,7 @@ img {
   padding: 0 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(200, 220, 200, 0.12);
   color: var(--muted);
   font-size: 0.92rem;
 }
@@ -507,19 +507,19 @@ img {
 
 .button-link--primary,
 .button-link--toolbar {
-  border-color: #9c650e;
+  border-color: #b8901a;
   background: var(--orange);
-  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.22);
 }
 
 .button-link--secondary {
-  background: rgba(255, 255, 255, 0.84);
+  background: rgba(200, 220, 200, 0.15);
 }
 
 .button-link--ghost {
   min-height: 40px;
   padding: 0 14px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(200, 220, 200, 0.1);
   font-size: 0.92rem;
 }
 
@@ -678,7 +678,7 @@ img {
   padding: 22px 24px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(200, 220, 200, 0.08);
 }
 
 .install-panel code {
@@ -687,7 +687,7 @@ img {
   padding: 14px 16px;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: rgba(248, 244, 236, 0.9);
+  background: rgba(20, 40, 30, 0.6);
   color: var(--ink);
   font-size: 0.95rem;
 }
@@ -718,8 +718,8 @@ img {
   padding: 28px 22px 24px;
   border: 6px solid var(--blue);
   border-radius: 0 14px 14px 14px;
-  background: white;
-  box-shadow: 0 22px 40px rgba(52, 118, 255, 0.14);
+  background: var(--paper-strong);
+  box-shadow: 0 22px 40px rgba(90, 196, 255, 0.1);
 }
 
 .feature-panel__intro h2 {
@@ -788,20 +788,20 @@ img {
 .feature-prompt__input {
   width: 100%;
   padding: 18px 20px;
-  border: 1px solid rgba(42, 36, 24, 0.15);
+  border: 1px solid rgba(200, 220, 200, 0.15);
   border-radius: 18px;
   background: var(--paper-strong);
   box-shadow: 0 0 0 6px rgba(42, 36, 24, 0.08);
-  color: #6b6b6b;
+  color: var(--muted);
   font-size: 1.05rem;
 }
 
 .feature-prompt__mode {
   width: min(100%, 92%);
   padding: 12px 14px;
-  border: 1px solid rgba(42, 36, 24, 0.08);
+  border: 1px solid rgba(200, 220, 200, 0.1);
   border-radius: 0 0 16px 16px;
-  background: rgba(233, 230, 220, 0.72);
+  background: rgba(20, 40, 30, 0.5);
   color: var(--muted);
   font-size: 0.92rem;
 }
@@ -819,9 +819,9 @@ img {
   justify-content: center;
   min-height: 40px;
   padding: 0 16px;
-  border: 1px solid rgba(42, 36, 24, 0.22);
+  border: 1px solid rgba(200, 220, 200, 0.2);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(200, 220, 200, 0.1);
   font-weight: 600;
 }
 
@@ -846,7 +846,7 @@ img {
 .footer {
   border: 1px solid var(--line);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(200, 220, 200, 0.08);
 }
 
 .operator-card,
@@ -968,8 +968,8 @@ img {
   color: var(--muted-soft);
 }
 
-.pricing-table__row + .pricing-table__row {
-  border-top: 1px solid rgba(67, 49, 22, 0.12);
+.pricing-table__row+.pricing-table__row {
+  border-top: 1px solid rgba(200, 220, 200, 0.12);
 }
 
 .pricing-table__row strong {
@@ -998,15 +998,15 @@ img {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.56);
+  background: rgba(200, 220, 200, 0.08);
 }
 
 .builder-panel__prompt {
   padding: 16px 18px;
-  border: 1px solid rgba(42, 36, 24, 0.15);
+  border: 1px solid rgba(200, 220, 200, 0.15);
   border-radius: 16px;
   background: var(--paper-strong);
-  color: #6b6b6b;
+  color: var(--muted);
 }
 
 .feature-prompt__chips--inline {
@@ -1054,7 +1054,7 @@ img {
   align-items: center;
   justify-content: center;
   border-right: 1px solid var(--line);
-  background: rgba(255, 248, 233, 0.85);
+  background: rgba(25, 50, 38, 0.85);
 }
 
 .cta-card__media img {
@@ -1141,8 +1141,8 @@ img {
   padding: 18px 18px 16px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 20px 40px rgba(49, 36, 16, 0.16);
+  background: rgba(35, 65, 52, 0.96);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 .cookie-banner__title {
@@ -1171,7 +1171,7 @@ img {
   margin-top: 10px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(246, 166, 30, 0.12);
+  background: rgba(245, 200, 66, 0.15);
 }
 
 .mobile-rail {
@@ -1195,7 +1195,7 @@ img {
   border: 1px solid var(--line);
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(200, 220, 200, 0.08);
 }
 
 .meet-jai-photo img {
@@ -1214,7 +1214,7 @@ img {
   margin: 0;
   padding: 20px 24px;
   border-left: 4px solid var(--orange);
-  background: rgba(246, 166, 30, 0.08);
+  background: rgba(245, 200, 66, 0.1);
   border-radius: 0 14px 14px 0;
   font-size: 1.35rem;
   font-weight: 600;
@@ -1232,7 +1232,7 @@ img {
   padding: 18px 20px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(200, 220, 200, 0.08);
 }
 
 .origin-label {
@@ -1257,7 +1257,7 @@ img {
   padding: 20px 24px;
   border: 2px solid var(--orange);
   border-radius: 14px;
-  background: rgba(246, 166, 30, 0.06);
+  background: rgba(245, 200, 66, 0.08);
 }
 
 .meet-jai-goal h3 {
@@ -1282,7 +1282,7 @@ img {
   padding: 28px 28px;
   border: 1px solid var(--line);
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(200, 220, 200, 0.08);
 }
 
 .email-signup--success {
@@ -1372,7 +1372,7 @@ img {
 }
 
 .logo-mark rect {
-  fill: #fff8ee;
+  fill: #1e3a2f;
   stroke: var(--ink);
   stroke-width: 4;
 }
@@ -1654,7 +1654,7 @@ img {
 
 .step-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(74, 49, 16, 0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .step-card__number {
@@ -1664,7 +1664,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.05em;
   color: var(--orange-deep);
-  background: rgba(246, 166, 30, 0.12);
+  background: rgba(245, 200, 66, 0.15);
   padding: 3px 10px;
   border-radius: 20px;
   margin-bottom: 12px;
@@ -1846,6 +1846,7 @@ img {
 }
 
 @media (max-width: 640px) {
+
   .steps-grid,
   .manifesto-grid {
     grid-template-columns: 1fr;
@@ -1913,6 +1914,7 @@ img {
     opacity: 0;
     transform: scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -1950,20 +1952,20 @@ img {
 
 /* P2: Dark mode context menu */
 .site-shell--dark .context-menu {
-  background: rgba(35, 32, 28, 0.96);
-  border-color: rgba(200, 190, 170, 0.2);
+  background: rgba(18, 32, 26, 0.96);
+  border-color: rgba(160, 200, 175, 0.18);
 }
 
 /* P2: Window blur / defocus */
 .reader-window--blurred {
   opacity: 0.7;
-  box-shadow: 0 12px 30px rgba(74, 49, 16, 0.06);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   transition: opacity 0.2s, box-shadow 0.2s;
 }
 
 .reader-window--blurred .window-header,
 .reader-window--blurred .window-toolbar {
-  background: rgba(230, 224, 210, 0.6);
+  background: rgba(28, 52, 42, 0.6);
 }
 
 .reader-window--blurred .traffic-light {
@@ -1972,15 +1974,15 @@ img {
 
 .site-shell--dark .reader-window--blurred .window-header,
 .site-shell--dark .reader-window--blurred .window-toolbar {
-  background: rgba(35, 32, 28, 0.6);
+  background: rgba(18, 32, 26, 0.6);
 }
 
 /* P2: Toolbar button active states */
 .toolbar-btn--active {
-  background: rgba(246, 166, 30, 0.18) !important;
+  background: rgba(245, 200, 66, 0.18) !important;
   color: var(--orange-deep);
   border-radius: 4px;
-  box-shadow: inset 0 0 0 1px rgba(246, 166, 30, 0.3);
+  box-shadow: inset 0 0 0 1px rgba(245, 200, 66, 0.3);
 }
 
 .window-toolbar__group button {
@@ -1990,9 +1992,9 @@ img {
 }
 
 .window-toolbar__group button:hover {
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(200, 220, 200, 0.1);
 }
 
 .site-shell--dark .window-toolbar__group button:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(200, 220, 200, 0.08);
 }

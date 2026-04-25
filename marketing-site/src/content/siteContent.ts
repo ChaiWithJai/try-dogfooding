@@ -128,15 +128,15 @@ export const siteContent = {
       { label: 'Talk to Jai', href: 'mailto:hello@trydogfooding.com', external: true },
     ],
     trustNote: home.hero.trustNote,
-    image: '/images/hero-dog.png',
+    image: '/images/hero-classroom.png',
   },
   install: {
     eyebrow: 'Install in one prompt',
     heading: 'Set up the starter kit without turning this into an infra project.',
     body: home.howItWorks.steps[0].description,
-    command: 'curl -sSL get.trydogfooding.com | sh',
-    secondaryCommand: 'npx dogfood init',
-    note: 'Prefer npm? Use the CLI directly. The workspace stays on your machine.',
+    command: 'curl -fsSL get.trydogfooding.com | bash',
+    secondaryCommand: 'npm install -g @trydogfooding/cli',
+    note: 'Dogfood works entirely locally. All workflows and history remain in your workspace folder.',
   },
   howItWorks: {
     heading: home.howItWorks.heading,
@@ -160,8 +160,8 @@ export const siteContent = {
     subhead: 'Live session. You\'ll leave with one working workflow against your real data. Nothing to install beforehand.',
     agenda: [
       { time: '0–10 min', activity: 'What dogfooding means and why operators can build software now' },
-      { time: '10–25 min', activity: 'Live install: set up Claude Code and connect one tool from your stack' },
-      { time: '25–45 min', activity: 'Build one workflow against your real data — start to finish, live' },
+      { time: '10–25 min', activity: 'Live install: run the script and connect one tool via MCP' },
+      { time: '25–45 min', activity: 'Run `dogfood run cx-triage` against your real data — start to finish, live' },
       { time: '45–60 min', activity: 'Q&A, next steps, and how the cohort works if you want to go deeper' },
     ],
     faq: [
@@ -243,7 +243,7 @@ export const siteContent = {
       'Append-only run history plus docs-first context files.',
       'Opt-in telemetry only. Off by default.',
     ],
-    image: '/images/stack-dog.png',
+    image: '/images/stack-library.png',
     footnote: 'README: trydogfooding starter kit.md',
   },
   pricing: {
@@ -276,7 +276,7 @@ export const siteContent = {
         pricing: 'Custom',
       },
     ],
-    image: '/images/pricing-dog.png',
+    image: '/images/principal-office.png',
   },
   builder: {
     heading: 'Claude Code, made usable for operators',
@@ -284,12 +284,12 @@ export const siteContent = {
     note:
       'TryDogfooding is the layer that turns live session teaching, templates, and operator context into a repeatable build practice.',
     chips: ['Teach the workflow', 'Run it locally', 'Keep shipping'],
-    image: '/images/builder-dog.png',
+    image: '/images/builder-teacher.png',
     promptPreview: 'What can I automate this week?',
   },
   meetJai: {
-    eyebrow: 'The builder',
-    headline: 'Meet Jai',
+    eyebrow: 'The teacher',
+    headline: 'Meet Professor Jai',
     purpose: '"I love bringing crazy ideas to life using product engineering."',
     origin: {
       then: {
@@ -342,7 +342,7 @@ export const siteContent = {
   cta: {
     heading: 'Start with a free 60-minute live session',
     body: 'Live session. We\'ll set up Claude Code together, connect your tools, and bring one idea to life. You\'ll leave with working software on your machine.',
-    image: '/images/cta-dog.png',
+    image: '/images/cta-graduation.png',
     options: [
       'Pick your operator track.',
       'Bring one real workflow.',
@@ -388,7 +388,7 @@ export const siteContent = {
     copyright: marketing.global.footer.copyright,
   },
   art: {
-    garden: '/images/garden-dog.png',
+    garden: '/images/garden-campus.png',
     texture: 'https://res.cloudinary.com/dmukukwp6/image/upload/texture_tan_9608fcca70.png',
   },
 } as const
