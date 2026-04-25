@@ -28,12 +28,12 @@ export async function getClaudeConfig(workspacePath: string): Promise<ClaudeConf
     if (err.code === "ENOENT") {
       return {};
     }
-    throw new DogfoodError(
-      `Failed to parse ${CLAUDE_CONFIG_FILE}. It might be malformed JSON.`,
-      "CONFIG_INVALID",
-      "Check your .claude.json file for syntax errors.",
-      err
-    );
+    throw new DogfoodError({
+      message: `Failed to parse ${CLAUDE_CONFIG_FILE}. It might be malformed JSON.`,
+      code: "CONFIG_INVALID",
+      nextStep: "Check your .claude.json file for syntax errors.",
+      cause: err,
+    });
   }
 }
 
@@ -45,12 +45,12 @@ export async function saveClaudeConfig(workspacePath: string, config: ClaudeConf
   try {
     await fs.writeFile(configPath, JSON.stringify(config, null, 2), "utf-8");
   } catch (err) {
-    throw new DogfoodError(
-      `Failed to write ${CLAUDE_CONFIG_FILE}.`,
-      "CONFIG_WRITE_FAILED",
-      "Check file permissions in your workspace.",
-      err
-    );
+    throw new DogfoodError({
+      message: `Failed to write ${CLAUDE_CONFIG_FILE}.`,
+      code: "CONFIG_WRITE_FAILED",
+      nextStep: "Check file permissions in your workspace.",
+      cause: err,
+    });
   }
 }
 
