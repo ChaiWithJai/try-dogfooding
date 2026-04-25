@@ -104,7 +104,7 @@ export const siteContent = {
     ] satisfies DesktopIconItem[],
     right: [
       { label: 'Why dogfooding?', href: '#why', icon: iconUrls.posthog },
-      { label: 'Devlog', href: 'https://github.com/trydogfooding/cli', icon: iconUrls.invite, external: true },
+      { label: 'Devlog', href: 'https://github.com/ChaiWithJai/try-dogfooding', icon: iconUrls.invite, external: true },
       { label: 'Community handbook', href: '#reading', icon: iconUrls.handbook },
       { label: 'Case studies', href: '#operators', icon: iconUrls.shoppingBag },
       { label: 'Work together', href: 'mailto:hello@trydogfooding.com', icon: iconUrls.typewriter, external: true },
@@ -123,7 +123,7 @@ export const siteContent = {
     primaryCta: { label: 'Join a free live session', href: '#cta' },
     secondaryCta: { label: 'Install with dogfood', href: '#install' },
     utilityLinks: [
-      { label: 'Open source', href: 'https://github.com/trydogfooding/cli', external: true },
+      { label: 'Open source', href: 'https://github.com/ChaiWithJai/try-dogfooding', external: true },
       { label: 'Watch the walkthrough', href: '#demo' },
       { label: 'Talk to Jai', href: 'mailto:hello@trydogfooding.com', external: true },
     ],
@@ -328,7 +328,7 @@ export const siteContent = {
       { label: 'Manifesto', href: '#why' },
       { label: 'Starter kit overview', href: '#product-os' },
       { label: 'Workshop-first pricing', href: '#pricing' },
-      { label: 'Open source repo', href: 'https://github.com/trydogfooding/cli', external: true },
+      { label: 'Open source repo', href: 'https://github.com/ChaiWithJai/try-dogfooding', external: true },
       { label: 'Contact the builder', href: 'mailto:hello@trydogfooding.com', external: true },
     ],
   },
@@ -372,7 +372,7 @@ export const siteContent = {
           { label: 'Why dogfooding', href: '#why' },
           { label: 'Feature walkthrough', href: '#demo' },
           { label: 'Live sessions', href: '#cta' },
-          { label: 'GitHub', href: 'https://github.com/trydogfooding/cli', external: true },
+          { label: 'GitHub', href: 'https://github.com/ChaiWithJai/try-dogfooding', external: true },
         ],
       },
       {
@@ -380,7 +380,7 @@ export const siteContent = {
         links: [
           { label: 'Meet Jai', href: '#meet-jai' },
           { label: 'Contact', href: 'mailto:hello@trydogfooding.com', external: true },
-          { label: 'Open source', href: 'https://github.com/trydogfooding/cli', external: true },
+          { label: 'Open source', href: 'https://github.com/ChaiWithJai/try-dogfooding', external: true },
         ],
       },
     ],
