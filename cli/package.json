@@ -8,7 +8,7 @@
   "homepage": "https://trydogfooding.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/trydogfooding/cli.git"
+    "url": "https://github.com/ChaiWithJai/try-dogfooding.git"
   },
   "bin": {
     "dogfood": "./dist/bin/dogfood.js"
