@@ -106,7 +106,7 @@ function App() {
       return
     }
     const setter = rail === 'left' ? setLeftIcons : setRightIcons
-    setter((prev: any[]) => {
+    setter((prev: DesktopIconItem[]) => {
       const copy = [...prev]
       const [moved] = copy.splice(draggingIcon.index, 1)
       copy.splice(dropIndex, 0, moved)
