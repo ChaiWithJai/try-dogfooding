@@ -1,10 +1,20 @@
-# TryDogfooding Marketing Site
+# TryDogfooding Marketing Site — The Dogfooding Academy
 
-This app lives in `/marketing-site` and rebuilds the `posthog.com` desktop-window homepage pattern for TryDogfooding, with the copy swapped over to our docs-driven messaging.
+The public-facing website at [trydogfooding.com](https://trydogfooding.com). A static SPA built with Vite + React, themed as "The Dogfooding Academy" — a green chalkboard aesthetic with school-themed illustrations and dog character sprites.
 
-The site is a Vite + React static frontend. The visual structure is intentionally close to PostHog's current desktop/mobile homepage experience: taskbar, desktop icon rails, floating reader window, textured background, and stacked marketing sections. The deployable copy source is [src/content/ux-copy.json](/Users/jaybhagat/projects/try-dogfooding/marketing-site/src/content/ux-copy.json), which was copied from the repo docs so this app can be published and deployed on its own.
+This app lives in `/marketing-site` within the monorepo.
 
-## Getting Up And Running
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| **Framework** | React 19 + TypeScript 6 |
+| **Bundler** | Vite 8 |
+| **Routing** | react-router-dom 7 |
+| **Styling** | Vanilla CSS (design tokens in `index.css`) |
+| **Build output** | Static HTML/JS/CSS → `dist/` |
+
+## Getting Started
 
 From the repo root:
 
@@ -16,63 +26,78 @@ npm run dev
 
 Vite will print the local URL, usually `http://localhost:5173`.
 
-## Local Production Build
+## Production Build
 
 ```bash
 cd marketing-site
 npm run build
-npm run preview
+npm run preview    # preview the production build locally
 ```
 
-The production output lands in `marketing-site/dist`.
+The production output lands in `marketing-site/dist/`.
 
 ## Deployment
 
-This site is a plain static build. There are no runtime environment variables or server functions required for the current version.
+This site is a static build. No runtime environment variables, no server functions, no SSR.
 
 ### Vercel
 
-- Root directory: `marketing-site`
-- Build command: `npm run build`
-- Output directory: `dist`
-- `vercel.json` is already present
+- **Project:** `trydogfooding-marketing-site`
+- **Root directory:** `marketing-site`
+- **Build command:** `npm run build`
+- **Output directory:** `dist`
+- **SPA routing:** handled by `vercel.json` rewrite rule (`/* → /index.html`)
 
-### Netlify
+Vercel auto-deploys from the `main` branch. Preview deploys are created for every PR.
 
-- Base directory: `marketing-site`
-- Build command: `npm run build`
-- Publish directory: `dist`
-- `public/_redirects` is already present
+## Project Structure
 
-### Cloudflare Pages
-
-- Project root: `marketing-site`
-- Build command: `npm run build`
-- Output directory: `dist`
+```
+marketing-site/
+├── index.html              # Vite entry point
+├── package.json
+├── vite.config.ts          # Vite config (React plugin, parent dir access)
+├── vercel.json             # Vercel SPA rewrite
+├── tsconfig.json           # TypeScript project references
+├── eslint.config.js
+├── public/                 # Static assets (images, sprites, favicon)
+└── src/
+    ├── main.tsx            # React entry
+    ├── App.tsx             # Page composition, routing, interactive state
+    ├── App.css             # Component-level styles
+    ├── index.css           # Design system — tokens, layout, typography, sections
+    ├── assets/             # Imported assets (images, SVGs)
+    └── content/
+        ├── siteContent.ts  # Homepage copy, nav labels, section data
+        └── ux-copy.json    # Deployable copy source (synced from docs)
+```
 
 ## Contributing
 
 ### Copy
 
-- Treat [src/content/ux-copy.json](/Users/jaybhagat/projects/try-dogfooding/marketing-site/src/content/ux-copy.json) as the deployable copy source for this repo.
-- If the website wording and the broader product docs disagree, sync both in the same change.
-- Keep the operator-first voice intact. Avoid hype, vague AI language, and claims the docs do not support.
+- Treat [`src/content/ux-copy.json`](src/content/ux-copy.json) as the deployable copy source.
+- If website copy and the broader product docs (`docs/central-doc.md`) disagree, sync both in the same change.
+- Keep the operator-first voice intact. Avoid hype, vague AI language, and claims the docs don't support.
 
-### Structure
+### Design
 
-- [src/App.tsx](/Users/jaybhagat/projects/try-dogfooding/marketing-site/src/App.tsx) contains the page composition and interactive states.
-- [src/content/siteContent.ts](/Users/jaybhagat/projects/try-dogfooding/marketing-site/src/content/siteContent.ts) maps repo docs into homepage copy, nav labels, and section data.
-- [src/index.css](/Users/jaybhagat/projects/try-dogfooding/marketing-site/src/index.css) holds the design tokens, window chrome, responsive layout, and section styling.
+- The site uses "The Dogfooding Academy" chalkboard theme — green backgrounds, chalk-like accents, school-themed illustrations.
+- Dog character sprites serve as mascots (Principal, Teacher, Paraprofessional).
+- Design tokens live in [`src/index.css`](src/index.css). Use existing tokens rather than ad-hoc values.
 
 ### Workflow
 
 1. Make the content or UI change.
-2. Run `npm run build`.
+2. Run `npm run build` — confirm no TypeScript or build errors.
 3. Check the page at desktop and mobile widths.
-4. Keep the PostHog-style structure coherent while changing only what needs to be ours.
+4. Run `npm run lint` for code quality.
+
+## CI/CD
+
+Lint and build run automatically on every PR via [GitHub Actions](../.github/workflows/ci.yml). Vercel handles production deploys on push to `main`.
 
 ## Current Notes
 
-- The clone currently focuses on the homepage experience, not a full multi-route PostHog site port.
-- Decorative art and icon assets are loaded from PostHog's public Cloudinary assets to stay visually close while we iterate on structure and copy.
+- The site is a single-page homepage experience, not a multi-route app.
 - The footer legal links are placeholders until reviewed content exists.

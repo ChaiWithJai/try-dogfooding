@@ -49,7 +49,9 @@ export function registerIntegrationsCommand(program: Command) {
         for (const name of names) {
           const config = integrations[name];
           console.log(`  ${chalk.bold(name)}`);
-          console.log(`  ${chalk.gray("Command:")} ${config.command} ${config.args.join(" ")}\n`);
+          if (config) {
+            console.log(`  ${chalk.gray("Command:")} ${config.command} ${config.args.join(" ")}\n`);
+          }
         }
       } catch (err) {
         console.error(formatError(wrapError(err), getFlags().verbose));

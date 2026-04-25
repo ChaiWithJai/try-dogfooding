@@ -106,7 +106,7 @@ function App() {
       return
     }
     const setter = rail === 'left' ? setLeftIcons : setRightIcons
-    setter((prev: any[]) => {
+    setter((prev: DesktopIconItem[]) => {
       const copy = [...prev]
       const [moved] = copy.splice(draggingIcon.index, 1)
       copy.splice(dropIndex, 0, moved)
@@ -188,7 +188,7 @@ function App() {
       <Taskbar />
 
       <div className="desktop-decoration" aria-hidden="true">
-        <img src={siteContent.art.garden} alt="" />
+        <img src={siteContent.art.garden} alt="" loading="lazy" />
       </div>
 
       {viewMode === 'desktop' && (
@@ -404,7 +404,7 @@ function App() {
 
           <section className="section section--split-content">
             <div className="art-card">
-              <img src={siteContent.stack.image} alt="School library and tech lab" />
+              <img src={siteContent.stack.image} alt="School library and tech lab" loading="lazy" />
             </div>
 
             <div className="copy-card">
@@ -452,14 +452,14 @@ function App() {
               </div>
 
               <div className="art-card art-card--compact">
-                <img src={siteContent.pricing.image} alt="Principal Biscuit's office" />
+                <img src={siteContent.pricing.image} alt="Principal Biscuit's office" loading="lazy" />
               </div>
             </div>
           </section>
 
           <section className="section section--split-content">
             <div className="art-card art-card--wide">
-              <img src={siteContent.builder.image} alt="Professor Jai grading at night" />
+              <img src={siteContent.builder.image} alt="Professor Jai grading at night" loading="lazy" />
             </div>
 
             <div className="copy-card">
@@ -487,7 +487,7 @@ function App() {
 
             <div className="meet-jai-layout">
               <div className="meet-jai-photo">
-                <img src={siteContent.meetJai.image} alt="Professor Jai — creator of TryDogfooding" />
+                <img src={siteContent.meetJai.image} alt="Professor Jai — creator of TryDogfooding" loading="lazy" />
               </div>
 
               <div className="meet-jai-content">
@@ -618,7 +618,7 @@ function App() {
           <section className="section cta-section" id="cta">
             <div className="cta-card">
               <div className="cta-card__media">
-                <img src={siteContent.cta.image} alt="Graduation ceremony" />
+                <img src={siteContent.cta.image} alt="Graduation ceremony" loading="lazy" />
               </div>
 
               <div className="cta-card__content">
@@ -776,10 +776,8 @@ function EmailSignup() {
         className="email-signup__form"
         name="email-signup"
         method="POST"
-        data-netlify="true"
         onSubmit={handleSubmit}
       >
-        <input type="hidden" name="form-name" value="email-signup" />
         <input
           type="email"
           name="email"
