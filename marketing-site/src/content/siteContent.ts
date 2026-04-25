@@ -128,7 +128,7 @@ export const siteContent = {
       { label: 'Talk to Jai', href: 'mailto:hello@trydogfooding.com', external: true },
     ],
     trustNote: home.hero.trustNote,
-    image: '/images/hero-classroom.webp',
+    image: '/images/hero-classroom.png',
   },
   install: {
     eyebrow: 'Install in one prompt',
@@ -243,7 +243,7 @@ export const siteContent = {
       'Append-only run history plus docs-first context files.',
       'Opt-in telemetry only. Off by default.',
     ],
-    image: '/images/stack-library.webp',
+    image: '/images/stack-library.png',
     footnote: 'README: trydogfooding starter kit.md',
   },
   pricing: {
@@ -276,7 +276,7 @@ export const siteContent = {
         pricing: 'Custom',
       },
     ],
-    image: '/images/principal-office.webp',
+    image: '/images/principal-office.png',
   },
   builder: {
     heading: 'Claude Code, made usable for operators',
@@ -284,7 +284,7 @@ export const siteContent = {
     note:
       'TryDogfooding is the layer that turns live session teaching, templates, and operator context into a repeatable build practice.',
     chips: ['Teach the workflow', 'Run it locally', 'Keep shipping'],
-    image: '/images/builder-teacher.webp',
+    image: '/images/builder-teacher.png',
     promptPreview: 'What can I automate this week?',
   },
   meetJai: {
@@ -307,7 +307,7 @@ export const siteContent = {
     },
     goal: 'Building the software you wished existed (without an engineer).',
     goalNote: 'We market via live events — we set up coding agents and bring ideas to life using our CLI tool plus Claude Code. Then we create UGC case studies from what people build.',
-    image: '/images/jai.webp',
+    image: '/images/jai.jpg',
     ctaLabel: 'Join a live session with Jai',
     ctaHref: '#cta',
   },
@@ -342,7 +342,7 @@ export const siteContent = {
   cta: {
     heading: 'Start with a free 60-minute live session',
     body: 'Live session. We\'ll set up Claude Code together, connect your tools, and bring one idea to life. You\'ll leave with working software on your machine.',
-    image: '/images/cta-graduation.webp',
+    image: '/images/cta-graduation.png',
     options: [
       'Pick your operator track.',
       'Bring one real workflow.',
@@ -388,7 +388,7 @@ export const siteContent = {
     copyright: marketing.global.footer.copyright,
   },
   art: {
-    garden: '/images/garden-campus.webp',
+    garden: '/images/garden-campus.png',
     texture: 'https://res.cloudinary.com/dmukukwp6/image/upload/texture_tan_9608fcca70.png',
   },
 } as const
