@@ -7,9 +7,9 @@
   --taskbar: rgba(30, 55, 44, 0.96);
   --line: rgba(200, 220, 200, 0.2);
   --line-strong: rgba(200, 220, 200, 0.35);
-  --ink: #e8eae2;
-  --muted: #9aab9e;
-  --muted-soft: #7a9a88;
+  --ink: #f0f2eb;
+  --muted: #c2d6c9;
+  --muted-soft: #9aab9e;
   --orange: #f5c842;
   --orange-deep: #e0a820;
   --blue: #5ac4ff;
@@ -219,6 +219,7 @@ img {
   border-radius: 8px;
   background: var(--orange);
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.18);
+  color: #112018;
   font-size: 0.96rem;
   font-weight: 700;
 }
@@ -509,6 +510,7 @@ img {
 .button-link--toolbar {
   border-color: #b8901a;
   background: var(--orange);
+  color: #112018;
   box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.22);
 }
 
