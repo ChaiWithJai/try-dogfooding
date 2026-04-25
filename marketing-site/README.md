@@ -40,7 +40,7 @@ The production output lands in `marketing-site/dist/`.
 
 This site is a static build. No runtime environment variables, no server functions, no SSR.
 
-### Vercel (primary config)
+### Vercel
 
 - **Project:** `trydogfooding-marketing-site`
 - **Root directory:** `marketing-site`
@@ -48,21 +48,7 @@ This site is a static build. No runtime environment variables, no server functio
 - **Output directory:** `dist`
 - **SPA routing:** handled by `vercel.json` rewrite rule (`/* → /index.html`)
 
-### Netlify (secondary config)
-
-- **Base directory:** `marketing-site`
-- **Build command:** `npm run build`
-- **Publish directory:** `dist`
-- **Node version:** 20
-- **SPA routing:** handled by `netlify.toml` redirect rule
-
-### Cloudflare Pages
-
-- **Project root:** `marketing-site`
-- **Build command:** `npm run build`
-- **Output directory:** `dist`
-
-> ⚠️ Both Vercel and Netlify configs are present with linked project state (`.vercel/project.json`, `.netlify/state.json`). Confirm which platform serves production traffic and remove the other to avoid deployment confusion.
+Vercel auto-deploys from the `main` branch. Preview deploys are created for every PR.
 
 ## Project Structure
 
@@ -72,7 +58,6 @@ marketing-site/
 ├── package.json
 ├── vite.config.ts          # Vite config (React plugin, parent dir access)
 ├── vercel.json             # Vercel SPA rewrite
-├── netlify.toml            # Netlify build + SPA redirect
 ├── tsconfig.json           # TypeScript project references
 ├── eslint.config.js
 ├── public/                 # Static assets (images, sprites, favicon)
@@ -108,9 +93,9 @@ marketing-site/
 3. Check the page at desktop and mobile widths.
 4. Run `npm run lint` for code quality.
 
-## CI/CD Status
+## CI/CD
 
-**Currently manual.** No automated build checks, no automated deployments. See the [root README](../README.md#cicd-status) for the full CI/CD audit.
+Lint and build run automatically on every PR via [GitHub Actions](../.github/workflows/ci.yml). Vercel handles production deploys on push to `main`.
 
 ## Current Notes
 

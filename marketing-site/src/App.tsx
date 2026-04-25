@@ -776,10 +776,8 @@ function EmailSignup() {
         className="email-signup__form"
         name="email-signup"
         method="POST"
-        data-netlify="true"
         onSubmit={handleSubmit}
       >
-        <input type="hidden" name="form-name" value="email-signup" />
         <input
           type="email"
           name="email"

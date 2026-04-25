@@ -10,6 +10,9 @@ This is the monorepo for [trydogfooding.com](https://trydogfooding.com) — an o
 
 ```
 try-dogfooding/
+├── .github/workflows/      # CI/CD — GitHub Actions
+│   ├── ci.yml              # Lint, typecheck, build, test on PR
+│   └── cli-release.yml     # npm publish on cli-v* tags
 ├── cli/                    # Dogfood CLI (@trydogfooding/cli)
 ├── marketing-site/         # trydogfooding.com — Vite + React static site
 ├── docs/                   # Central design doc, feature spec, ADRs
@@ -48,7 +51,7 @@ npm run dev
 
 #### Deployment
 
-The marketing site is a static build with no server-side runtime. Deployment configs exist for **both Vercel and Netlify** (see [Deployment Targets](#deployment-targets) below).
+The marketing site deploys to **Vercel** as a static build. No server-side runtime.
 
 **Production build:**
 
@@ -136,68 +139,58 @@ Static markdown specs and architectural records. No doc site — these are read 
 
 ## Deployment Targets
 
-### Marketing Site
-
-> ⚠️ **Dual-config warning.** Both Vercel and Netlify deployment configs exist and are linked to live projects. Consolidate to a single target before the next production push.
-
-#### Vercel
+### Marketing Site → Vercel
 
 - **Project:** `trydogfooding-marketing-site`
 - **Root directory:** `marketing-site`
 - **Build command:** `npm run build`
 - **Output directory:** `dist`
 - **Config:** [`marketing-site/vercel.json`](marketing-site/vercel.json) — SPA rewrite (`/* → /index.html`)
-- **Local state:** `.vercel/project.json`
 
-#### Netlify
+Vercel auto-deploys from the `main` branch. Preview deploys are created for every PR.
 
-- **Site ID:** `715db075-4481-42ea-8f78-75446bf95a0e`
-- **Base directory:** `marketing-site`
-- **Build command:** `npm run build`
-- **Publish directory:** `dist`
-- **Node version:** 20
-- **Config:** [`marketing-site/netlify.toml`](marketing-site/netlify.toml) — SPA redirect (`/* → /index.html` 200)
-- **Local state:** `.netlify/state.json`
-
-### CLI
+### CLI → npm + GitHub Releases
 
 | Target | Status |
 |---|---|
 | **npm registry** | ✅ Configured (`publishConfig.access: public`) |
-| **GitHub Releases** | ❌ No release automation |
+| **GitHub Releases** | ✅ Automated via `cli-release.yml` on `cli-v*` tags |
 | **Homebrew** | ❌ No tap repo |
 | **Docker (GHCR)** | ❌ No Dockerfile |
 
 ---
 
-## CI/CD Status
+## CI/CD
 
-**Current state: fully manual.** There are no GitHub Actions workflows, no automated tests on PR, no automated deployments.
+### GitHub Actions
 
-### What exists today
+| Workflow | Trigger | What it does |
+|---|---|---|
+| [`ci.yml`](.github/workflows/ci.yml) | PR to `main` or `release/*`, push to `main` | Lint + build (marketing-site), typecheck + build + test (CLI) |
+| [`cli-release.yml`](.github/workflows/cli-release.yml) | Push tag `cli-v*` | Full test suite → npm publish → GitHub Release |
 
-| Step | Automation |
+### How to release the CLI
+
+```bash
+git tag cli-v0.1.1
+git push origin cli-v0.1.1
+# GitHub Actions handles: typecheck → build → test → npm publish → GitHub Release
+```
+
+### What's automated vs not yet
+
+| Step | Status |
 |---|---|
-| Lint (marketing-site) | Manual — `npm run lint` |
-| Type check (CLI) | Manual — `npm run typecheck` |
-| Unit/integration tests (CLI) | Manual — `npm test` (58 tests) |
-| Build (marketing-site) | Manual — `npm run build` |
-| Build (CLI) | Manual — `npm run build` |
-| Deploy (marketing-site) | Manual — `vercel deploy` or Netlify git-push |
-| Publish (CLI to npm) | Manual — `npm publish` |
-| Release signing | ❌ Not implemented |
-| SBOM generation | ❌ Not implemented |
-
-### What the spec requires (not yet built)
-
-From [active-feature-spec.md § Release guardrails](docs/active-feature-spec.md):
-
-- [ ] Tests green (unit, integration, supported-OS matrix)
-- [ ] Install script tested on clean VM for each supported OS
-- [ ] Docker image smoke-tested
-- [ ] Release signed (cosign)
-- [ ] SBOM published
-- [ ] Changelog written in operator-legible language
+| Lint (marketing-site) | ✅ CI on PR |
+| Type check (CLI) | ✅ CI on PR |
+| Build (both workloads) | ✅ CI on PR |
+| Unit/integration tests (CLI) | ✅ CI on PR (58 tests) |
+| Deploy (marketing-site) | ✅ Vercel auto-deploy on push to main |
+| Publish (CLI to npm) | ✅ On `cli-v*` tag |
+| Multi-OS test matrix | ❌ Not yet |
+| Release signing (cosign) | ❌ Not yet |
+| SBOM generation | ❌ Not yet |
+| Docker image | ❌ Not yet |
 
 ---
 
