@@ -8,12 +8,15 @@ test.describe('Dogged Pursuits promotion', () => {
 
     const popup = page.getByTestId('dogged-popup')
     await expect(popup).toBeVisible()
-    await expect(popup.getByRole('heading', { name: /Build the software you wish existed/i })).toBeVisible()
-    await expect(page.getByRole('link', { name: /Watch latest build/i })).toHaveAttribute(
+    await expect(popup.getByRole('heading', { name: /Watch the work become software/i })).toBeVisible()
+    await expect(popup.getByRole('button', { name: /10-second clip/i })).toBeVisible()
+    await popup.getByRole('button', { name: /10-second clip/i }).click()
+    await expect(popup.locator('video')).toHaveAttribute('src', '/videos/dogged-pursuits-clip.mp4')
+    await expect(page.getByRole('link', { name: /Watch the latest build/i })).toHaveAttribute(
       'href',
       'https://x.com/i/broadcasts/1aKbdbpMVbdJX',
     )
-    await expect(page.getByRole('link', { name: /Watch the Instagram mirror/i })).toHaveAttribute(
+    await expect(page.getByRole('link', { name: /Use the Instagram mirror/i })).toHaveAttribute(
       'href',
       /instagram\.com\/reel\/DXvOpxmjPfG/,
     )
@@ -56,7 +59,10 @@ test.describe('Dogged Pursuits promotion', () => {
     await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     await expect(page.getByTestId('dogged-popup')).toBeVisible()
-    await expect(page.getByRole('link', { name: /Watch latest build/i })).toBeVisible()
-    await expect(page.getByRole('link', { name: /Watch the Instagram mirror/i })).toBeVisible()
+    await expect(page.getByRole('button', { name: /10-second clip/i })).toBeVisible()
+    await page.getByRole('button', { name: /10-second clip/i }).click()
+    await expect(page.locator('video')).toBeVisible()
+    await expect(page.getByRole('link', { name: /Watch the latest build/i })).toBeVisible()
+    await expect(page.getByRole('link', { name: /Use the Instagram mirror/i })).toBeVisible()
   })
 })

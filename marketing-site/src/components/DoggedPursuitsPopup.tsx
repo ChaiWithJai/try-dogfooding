@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { doggedPursuitsContent } from '../content/doggedPursuits'
 
 type DoggedPursuitsPopupProps = {
@@ -7,6 +8,7 @@ type DoggedPursuitsPopupProps = {
 
 export function DoggedPursuitsPopup({ mobileTakeover = false, onClose }: DoggedPursuitsPopupProps) {
   const content = doggedPursuitsContent
+  const [mediaMode, setMediaMode] = useState<'preview' | 'clip'>('preview')
 
   return (
     <aside
@@ -50,11 +52,55 @@ export function DoggedPursuitsPopup({ mobileTakeover = false, onClose }: DoggedP
           </section>
 
           <section className="dogged-popup__episode" aria-label="Latest episode">
-            <div className="dogged-popup__episode-frame">
+            <div className="dogged-popup__media-switch" aria-label="Episode media">
+              <button
+                type="button"
+                className={mediaMode === 'preview' ? 'dogged-popup__media-tab dogged-popup__media-tab--active' : 'dogged-popup__media-tab'}
+                onClick={() => setMediaMode('preview')}
+              >
+                {content.media.previewLabel}
+              </button>
+              <button
+                type="button"
+                className={mediaMode === 'clip' ? 'dogged-popup__media-tab dogged-popup__media-tab--active' : 'dogged-popup__media-tab'}
+                onClick={() => setMediaMode('clip')}
+              >
+                {content.media.clipLabel}
+              </button>
+            </div>
+
+            <div className="dogged-popup__episode-frame" data-mode={mediaMode}>
+              <div className="dogged-popup__preview" aria-hidden={mediaMode !== 'preview'}>
+                <img src={content.media.poster} alt="" loading="lazy" />
+                <div>
+                  <span>{content.media.previewLabel}</span>
+                  <strong>{content.media.previewTitle}</strong>
+                  <p>{content.media.previewBody}</p>
+                </div>
+              </div>
+
+              <div className="dogged-popup__clip" aria-hidden={mediaMode !== 'clip'}>
+                <video
+                  controls
+                  muted
+                  playsInline
+                  preload="metadata"
+                  poster={content.media.poster}
+                  src={content.media.clip}
+                >
+                  <a href={content.primaryCta.href} target="_blank" rel="noreferrer">
+                    {content.primaryCta.label}
+                  </a>
+                </video>
+              </div>
+            </div>
+
+            <div className="dogged-popup__episode-copy">
               <span>{content.episodeLabel}</span>
               <strong>{content.episodeTitle}</strong>
               <p>{content.episodeNote}</p>
             </div>
+
             <a className="dogged-popup__fallback" href={content.fallbackCta.href} target="_blank" rel="noreferrer">
               {content.fallbackCta.label}
             </a>
