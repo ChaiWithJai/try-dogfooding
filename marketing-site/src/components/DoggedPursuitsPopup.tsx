@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { doggedPursuitsContent } from '../content/doggedPursuits'
 
 type DoggedPursuitsPopupProps = {
@@ -8,7 +7,6 @@ type DoggedPursuitsPopupProps = {
 
 export function DoggedPursuitsPopup({ mobileTakeover = false, onClose }: DoggedPursuitsPopupProps) {
   const content = doggedPursuitsContent
-  const [mediaMode, setMediaMode] = useState<'preview' | 'clip'>('preview')
 
   return (
     <aside
@@ -39,60 +37,27 @@ export function DoggedPursuitsPopup({ mobileTakeover = false, onClose }: DoggedP
             <p className="dogged-popup__eyebrow">{content.eyebrow}</p>
             <h2>{content.headline}</h2>
             <p>{content.dek}</p>
-
-            <div className="dogged-popup__actions">
-              <a className="dogged-popup__button dogged-popup__button--primary" href={content.primaryCta.href} target="_blank" rel="noreferrer">
-                <PlayIcon />
-                <span>{content.primaryCta.label}</span>
-              </a>
-              <a className="dogged-popup__button dogged-popup__button--secondary" href={content.subscribeCta.href} target="_blank" rel="noreferrer">
-                {content.subscribeCta.label}
-              </a>
-            </div>
           </section>
 
           <section className="dogged-popup__episode" aria-label="Latest episode">
-            <div className="dogged-popup__media-switch" aria-label="Episode media">
-              <button
-                type="button"
-                className={mediaMode === 'preview' ? 'dogged-popup__media-tab dogged-popup__media-tab--active' : 'dogged-popup__media-tab'}
-                onClick={() => setMediaMode('preview')}
+            <div className="dogged-popup__episode-frame">
+              <video
+                aria-label={content.media.label}
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                poster={content.media.poster}
+                src={content.media.clip}
               >
-                {content.media.previewLabel}
-              </button>
-              <button
-                type="button"
-                className={mediaMode === 'clip' ? 'dogged-popup__media-tab dogged-popup__media-tab--active' : 'dogged-popup__media-tab'}
-                onClick={() => setMediaMode('clip')}
-              >
-                {content.media.clipLabel}
-              </button>
-            </div>
-
-            <div className="dogged-popup__episode-frame" data-mode={mediaMode}>
-              <div className="dogged-popup__preview" aria-hidden={mediaMode !== 'preview'}>
-                <img src={content.media.poster} alt="" loading="lazy" />
-                <div>
-                  <span>{content.media.previewLabel}</span>
-                  <strong>{content.media.previewTitle}</strong>
-                  <p>{content.media.previewBody}</p>
-                </div>
-              </div>
-
-              <div className="dogged-popup__clip" aria-hidden={mediaMode !== 'clip'}>
-                <video
-                  controls
-                  muted
-                  playsInline
-                  preload="metadata"
-                  poster={content.media.poster}
-                  src={content.media.clip}
-                >
-                  <a href={content.primaryCta.href} target="_blank" rel="noreferrer">
-                    {content.primaryCta.label}
-                  </a>
-                </video>
-              </div>
+                <a href={content.primaryCta.href} target="_blank" rel="noreferrer">
+                  {content.primaryCta.label}
+                </a>
+              </video>
+              <a className="dogged-popup__video-cta" href={content.primaryCta.href} target="_blank" rel="noreferrer">
+                {content.media.overlayCta}
+              </a>
             </div>
 
             <div className="dogged-popup__episode-copy">
@@ -101,9 +66,15 @@ export function DoggedPursuitsPopup({ mobileTakeover = false, onClose }: DoggedP
               <p>{content.episodeNote}</p>
             </div>
 
-            <a className="dogged-popup__fallback" href={content.fallbackCta.href} target="_blank" rel="noreferrer">
-              {content.fallbackCta.label}
-            </a>
+            <div className="dogged-popup__actions">
+              <a className="dogged-popup__button dogged-popup__button--primary" href={content.primaryCta.href} target="_blank" rel="noreferrer">
+                <PlayIcon />
+                <span>{content.primaryCta.label}</span>
+              </a>
+              <a className="dogged-popup__fallback" href={content.fallbackCta.href} target="_blank" rel="noreferrer">
+                {content.fallbackCta.label}
+              </a>
+            </div>
           </section>
 
           <section className="dogged-popup__process">
@@ -113,6 +84,10 @@ export function DoggedPursuitsPopup({ mobileTakeover = false, onClose }: DoggedP
               ))}
             </div>
             <p>{content.body}</p>
+
+            <a className="dogged-popup__subscribe" href={content.subscribeCta.href} target="_blank" rel="noreferrer">
+              {content.subscribeCta.label}
+            </a>
 
             <div className="dogged-popup__stats">
               {content.stats.map((stat) => (

@@ -8,15 +8,15 @@ test.describe('Dogged Pursuits promotion', () => {
 
     const popup = page.getByTestId('dogged-popup')
     await expect(popup).toBeVisible()
-    await expect(popup.getByRole('heading', { name: /Watch the work become software/i })).toBeVisible()
-    await expect(popup.getByRole('button', { name: /10-second clip/i })).toBeVisible()
-    await popup.getByRole('button', { name: /10-second clip/i }).click()
+    await expect(popup.getByRole('heading', { name: /See one workflow become software/i })).toBeVisible()
     await expect(popup.locator('video')).toHaveAttribute('src', '/videos/dogged-pursuits-clip.mp4')
-    await expect(page.getByRole('link', { name: /Watch the latest build/i })).toHaveAttribute(
+    await expect(popup.locator('video')).toHaveJSProperty('muted', true)
+    await expect(popup.locator('video')).toHaveAttribute('autoplay', '')
+    await expect(page.getByRole('link', { name: /Watch the full episode on X/i })).toHaveAttribute(
       'href',
       'https://x.com/i/broadcasts/1aKbdbpMVbdJX',
     )
-    await expect(page.getByRole('link', { name: /Use the Instagram mirror/i })).toHaveAttribute(
+    await expect(page.getByRole('link', { name: /Use the Instagram backup/i })).toHaveAttribute(
       'href',
       /instagram\.com\/reel\/DXvOpxmjPfG/,
     )
@@ -33,6 +33,8 @@ test.describe('Dogged Pursuits promotion', () => {
 
     await expect(page.getByTestId('dogged-popup')).toBeVisible()
     await expect(page.getByText('Dogged Pursuits').first()).toBeVisible()
+    await expect(page.locator('video')).toBeVisible()
+    await expect(page.locator('video')).toHaveJSProperty('muted', true)
     await expect(page.locator('.reader-window')).toHaveCount(0)
     await expect(page.locator('.taskbar')).toHaveCount(0)
     await expect(page.getByRole('link', { name: /Get the build notes/i })).toHaveAttribute(
@@ -59,10 +61,8 @@ test.describe('Dogged Pursuits promotion', () => {
     await page.goto('/', { waitUntil: 'domcontentloaded' })
 
     await expect(page.getByTestId('dogged-popup')).toBeVisible()
-    await expect(page.getByRole('button', { name: /10-second clip/i })).toBeVisible()
-    await page.getByRole('button', { name: /10-second clip/i }).click()
     await expect(page.locator('video')).toBeVisible()
-    await expect(page.getByRole('link', { name: /Watch the latest build/i })).toBeVisible()
-    await expect(page.getByRole('link', { name: /Use the Instagram mirror/i })).toBeVisible()
+    await expect(page.getByRole('link', { name: /Watch the full episode on X/i })).toBeVisible()
+    await expect(page.getByRole('link', { name: /Use the Instagram backup/i })).toBeVisible()
   })
 })

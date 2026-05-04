@@ -1194,8 +1194,8 @@ img {
 }
 
 .dogged-popup__shell {
-  width: min(920px, 100%);
-  max-height: min(760px, calc(100vh - 36px));
+  width: min(760px, 100%);
+  max-height: calc(100vh - 36px);
   overflow: auto;
   border: 1px solid var(--line-strong);
   border-radius: 16px;
@@ -1256,9 +1256,9 @@ img {
 
 .dogged-popup__body {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
-  gap: 22px;
-  padding: 30px;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 22px 30px 30px;
 }
 
 .dogged-popup__hero,
@@ -1272,13 +1272,14 @@ img {
 .dogged-popup__hero {
   display: grid;
   align-content: center;
-  min-height: 360px;
-  padding: 26px 32px;
+  min-height: auto;
+  padding: 18px 32px 10px;
+  text-align: center;
 }
 
 .dogged-popup__eyebrow {
   width: fit-content;
-  margin: 0 0 16px;
+  margin: 0 auto 16px;
   padding: 4px 9px;
   border: 1px solid var(--line-strong);
   background: rgba(20, 36, 30, 0.7);
@@ -1295,14 +1296,16 @@ img {
 }
 
 .dogged-popup h2 {
-  max-width: 11ch;
-  font-size: clamp(2.3rem, 5vw, 4rem);
+  max-width: 12ch;
+  margin-inline: auto;
+  font-size: clamp(2.3rem, 4.3vw, 3.35rem);
   line-height: 0.95;
   text-transform: uppercase;
 }
 
 .dogged-popup__hero p {
-  max-width: 38rem;
+  max-width: 35rem;
+  margin-inline: auto;
   margin-top: 16px;
   color: var(--muted);
   font-size: 1.05rem;
@@ -1313,6 +1316,10 @@ img {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 28px;
+}
+
+.dogged-popup__episode .dogged-popup__actions {
+  margin-top: 0;
 }
 
 .dogged-popup__button {
@@ -1355,37 +1362,17 @@ img {
 
 .dogged-popup__episode {
   display: grid;
-  gap: 12px;
+  gap: 14px;
   align-content: stretch;
-  padding: 18px;
-}
-
-.dogged-popup__media-switch {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.dogged-popup__media-tab {
-  min-height: 38px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(200, 220, 200, 0.08);
-  color: var(--muted);
-  font: 800 0.68rem/1.1 var(--font-mono);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.dogged-popup__media-tab--active {
-  border-color: #b8901a;
-  background: rgba(245, 200, 66, 0.16);
-  color: var(--ink);
+  padding: 0 32px 8px;
 }
 
 .dogged-popup__episode-frame {
   position: relative;
-  min-height: 300px;
+  width: min(560px, 100%);
+  aspect-ratio: 16 / 9;
+  min-height: 0;
+  margin-inline: auto;
   overflow: hidden;
   border: 1px solid rgba(245, 200, 66, 0.35);
   border-radius: 10px;
@@ -1394,50 +1381,32 @@ img {
     linear-gradient(180deg, rgba(20, 36, 30, 0.2), rgba(20, 36, 30, 0.88));
 }
 
-.dogged-popup__preview,
-.dogged-popup__clip {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  opacity: 0;
-  transform: translateY(10px) scale(0.98);
-  transition:
-    opacity 260ms ease,
-    transform 260ms ease;
-  pointer-events: none;
-}
-
-.dogged-popup__episode-frame[data-mode='preview'] .dogged-popup__preview,
-.dogged-popup__episode-frame[data-mode='clip'] .dogged-popup__clip {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
-.dogged-popup__preview img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.78;
-}
-
-.dogged-popup__preview div {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  align-content: end;
-  gap: 10px;
-  padding: 18px;
-  background: linear-gradient(180deg, rgba(20, 36, 30, 0.08), rgba(20, 36, 30, 0.9));
-}
-
-.dogged-popup__clip video {
+.dogged-popup__episode-frame video {
+  display: block;
   width: 100%;
   height: 100%;
   background: #0e1c16;
   object-fit: cover;
+}
+
+.dogged-popup__video-cta {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1;
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 14px;
+  border: 1px solid #b8901a;
+  border-radius: 6px;
+  background: var(--orange);
+  color: #112018;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
 }
 
 .dogged-popup__episode-copy {
@@ -1447,7 +1416,6 @@ img {
 }
 
 .dogged-popup__episode-copy span,
-.dogged-popup__preview span,
 .dogged-popup__stats span {
   color: var(--muted-soft);
   font: 700 0.68rem/1.2 var(--font-mono);
@@ -1455,14 +1423,12 @@ img {
   text-transform: uppercase;
 }
 
-.dogged-popup__episode-copy strong,
-.dogged-popup__preview strong {
+.dogged-popup__episode-copy strong {
   font-size: 1.5rem;
   line-height: 1.05;
 }
 
 .dogged-popup__episode-copy p,
-.dogged-popup__preview p,
 .dogged-popup__process p {
   color: var(--muted);
 }
@@ -1477,10 +1443,22 @@ img {
   font-weight: 700;
 }
 
+.dogged-popup__subscribe {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(200, 220, 200, 0.1);
+  color: var(--ink);
+  font-weight: 800;
+}
+
 .dogged-popup__process {
-  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(220px, 0.85fr) minmax(0, 1fr);
   gap: 22px;
   align-items: center;
   padding: 24px;
@@ -1506,6 +1484,7 @@ img {
 }
 
 .dogged-popup__stats {
+  grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat(2, minmax(110px, 1fr));
   gap: 10px;
@@ -1590,14 +1569,14 @@ img {
   }
 
   .dogged-popup__hero {
-    min-height: min(620px, calc(100vh - 60px));
-    padding: 84px 16px 44px;
+    min-height: auto;
+    padding: 58px 16px 24px;
     border-top: 1px solid var(--line);
   }
 
   .dogged-popup h2 {
-    max-width: 9ch;
-    font-size: clamp(3rem, 15vw, 4.65rem);
+    max-width: 10ch;
+    font-size: clamp(2.85rem, 13vw, 4.25rem);
   }
 
   .dogged-popup__hero p {
@@ -1616,11 +1595,12 @@ img {
 
   .dogged-popup__episode {
     border-top: 1px solid var(--line);
-    padding: 22px 16px;
+    padding: 24px 16px 32px;
   }
 
   .dogged-popup__episode-frame {
-    min-height: 360px;
+    aspect-ratio: 16 / 9;
+    min-height: 0;
   }
 
   .dogged-popup__process {
@@ -1628,6 +1608,12 @@ img {
     gap: 18px;
     border-top: 1px solid var(--line);
     padding: 44px 16px;
+  }
+
+  .dogged-popup__subscribe {
+    width: 100%;
+    min-height: 58px;
+    text-transform: uppercase;
   }
 
   .dogged-popup__stats {
