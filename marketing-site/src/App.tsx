@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { siteContent, type DesktopIconItem } from './content/siteContent'
+import { DoggedPursuitsPopup } from './components/DoggedPursuitsPopup'
 
 type ViewMode = 'desktop' | 'website'
 type WindowMode = 'normal' | 'minimized' | 'maximized' | 'closed'
@@ -10,6 +11,10 @@ function App() {
   const [activeTab, setActiveTab] = useState(siteContent.featureTabs[0].id)
   const [operatorCards, setOperatorCards] = useState(siteContent.operators.cards)
   const [bannerClosed, setBannerClosed] = useState(false)
+  const [doggedPopupClosed, setDoggedPopupClosed] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(() => (
+    typeof window === 'undefined' ? false : window.matchMedia('(max-width: 760px)').matches
+  ))
   const [darkMode, setDarkMode] = useState(false)
   const [windowMode, setWindowMode] = useState<WindowMode>('normal')
   const [windowPos, setWindowPos] = useState({ x: 0, y: 0 })
@@ -64,6 +69,14 @@ function App() {
       window.removeEventListener('mousemove', handleMouseMove)
       window.removeEventListener('mouseup', handleMouseUp)
     }
+  }, [])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 760px)')
+    const handleChange = (event: MediaQueryListEvent) => setIsMobileViewport(event.matches)
+
+    mediaQuery.addEventListener('change', handleChange)
+    return () => mediaQuery.removeEventListener('change', handleChange)
   }, [])
 
   const handleTrafficLight = useCallback((action: 'close' | 'minimize' | 'maximize') => {
@@ -178,6 +191,10 @@ function App() {
   const windowStyle = viewMode === 'desktop' && windowMode === 'normal'
     ? { transform: `translate(${windowPos.x}px, ${windowPos.y}px)` }
     : undefined
+
+  if (isMobileViewport) {
+    return <DoggedPursuitsPopup mobileTakeover />
+  }
 
   return (
     <div
@@ -707,6 +724,10 @@ function App() {
       </div>
 
       {!bannerClosed && <CookieBanner onClose={() => setBannerClosed(true)} />}
+
+      {!doggedPopupClosed && (
+        <DoggedPursuitsPopup onClose={() => setDoggedPopupClosed(true)} />
+      )}
 
       {contextMenu && (
         <ContextMenu
