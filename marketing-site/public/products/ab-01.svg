@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+  <title id="title">AB-01 steering wheel airbag product render</title>
+  <desc id="desc">A minimalist black steering wheel with an inflated white airbag in the center.</desc>
+  <rect width="1200" height="1500" fill="#fff"/>
+  <g transform="translate(600 430)">
+    <circle r="300" fill="none" stroke="#080808" stroke-width="58"/>
+    <path d="M-260 0H-96M96 0H260M0 96V280" fill="none" stroke="#080808" stroke-width="66" stroke-linecap="round"/>
+    <circle r="305" fill="none" stroke="#2a2a2a" stroke-width="10" opacity=".4"/>
+    <circle r="156" fill="#f4f4f2"/>
+    <path d="M-118-80c36-68 138-80 198-26 54 48 72 132 31 196-31 49-101 73-168 54-74-20-104-84-61-224Z" fill="#fff" opacity=".72"/>
+    <path d="M-142-8c18 74 69 126 144 134M-62-142c36 63 39 128 16 203M74-118c-18 61-11 120 34 174M-136 60c42-33 92-49 151-46" fill="none" stroke="#d8d8d5" stroke-width="9" stroke-linecap="round"/>
+    <path d="M-88 132c56 29 128 25 178-6" fill="none" stroke="#c7c7c3" stroke-width="8" stroke-linecap="round" opacity=".9"/>
+  </g>
+  <text x="600" y="1185" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="60" letter-spacing="10" fill="#080808">AB-01</text>
+  <text x="600" y="1390" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="72" fill="#080808">+</text>
+</svg>
