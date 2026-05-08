@@ -20,6 +20,7 @@ test.describe('Yeezy Airbags parody product page', () => {
       'href',
       'https://x.com/ninepixelgrid/status/2050635687792095531',
     )
+    await expect(page.locator('.ya-product__media img')).toHaveAttribute('src', '/products/ab-01-cut.png')
     await expect(page.locator('audio')).toHaveAttribute('src', '/audio/whatever-works-preview.mp3')
   })
 

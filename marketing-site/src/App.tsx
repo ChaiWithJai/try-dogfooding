@@ -4,7 +4,8 @@ const product = {
   code: 'AB-01',
   name: 'Yeezy Airbags',
   price: '$20',
-  image: '/products/ab-01.svg',
+  image: '/products/ab-01.png',
+  detailImage: '/products/ab-01-cut.png',
   audio: '/audio/whatever-works-preview.mp3',
   tweet: 'https://x.com/ninepixelgrid/status/2050635687792095531',
 }
@@ -30,7 +31,7 @@ function App() {
             Yeezy Airbags product index
           </h1>
           <button className="ya-product-tile" type="button" onClick={() => setPage('product')} aria-label="Open AB-01">
-            <img src={product.image} alt="AB-01 steering wheel airbag" />
+            <img src={product.image} alt="AB-01 steering wheel airbag" width="900" height="1125" decoding="async" />
           </button>
         </section>
       ) : (
@@ -39,7 +40,7 @@ function App() {
             <button className="ya-back" type="button" onClick={() => setPage('home')}>
               BACK
             </button>
-            <img src={product.image} alt="AB-01 steering wheel airbag" />
+            <img src={product.detailImage} alt="AB-01 steering wheel airbag" width="800" height="800" decoding="async" />
           </section>
 
           <section className="ya-product__copy">

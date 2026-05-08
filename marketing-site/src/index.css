@@ -119,6 +119,7 @@ img {
 
 .ya-product-tile img {
   width: min(600px, 92vw);
+  height: auto;
   align-self: center;
 }
 
@@ -139,7 +140,8 @@ img {
 }
 
 .ya-product__media img {
-  width: min(720px, 92%);
+  width: min(660px, 88%);
+  height: auto;
 }
 
 .ya-back {
