@@ -15,6 +15,7 @@ test.describe('Yeezy Airbags parody product page', () => {
 
     await expect(page.getByRole('heading', { name: /Yeezy Airbags/i })).toBeVisible()
     await expect(page.getByText('FOR WHEN YOU ARE CRASHING OUT')).toBeVisible()
+    await expect(page.getByText(/mistake a compliment for a crime scene/i)).toBeVisible()
     await expect(page.getByRole('link', { name: /Deploy airbag/i })).toHaveAttribute(
       'href',
       'https://x.com/ninepixelgrid/status/2050635687792095531',
@@ -31,5 +32,15 @@ test.describe('Yeezy Airbags parody product page', () => {
     await expect(page.getByRole('heading', { name: /Yeezy Airbags/i })).toBeVisible()
     await expect(page.getByRole('link', { name: /Deploy airbag/i })).toBeVisible()
     await expect(page.getByRole('button', { name: /Details/i })).toBeVisible()
+  })
+
+  test('details copy stays satirical without naming a private target', async ({ page }) => {
+    await page.goto('/')
+    await page.getByRole('button', { name: /AB-01/i }).click()
+    await page.getByRole('button', { name: /Details/i }).click()
+
+    await expect(page.getByText(/brand-protection theatre/i)).toBeVisible()
+    await expect(page.getByText(/grand theft homepage/i)).toBeVisible()
+    await expect(page.getByText(/Cuckoo Cory/i)).toHaveCount(0)
   })
 })

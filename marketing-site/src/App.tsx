@@ -49,8 +49,8 @@ function App() {
             <p className="ya-price">{product.price}</p>
 
             <p className="ya-lede">
-              Fictional impact protection for comment sections, quote tweets, and design discourse
-              at unsafe speeds.
+              Fictional impact protection for web people who discover a clone, mistake a compliment
+              for a crime scene, and enter the quote-tweet at unsafe speeds.
             </p>
 
             <div className="ya-actions">
@@ -65,13 +65,16 @@ function App() {
             {expanded && (
               <div className="ya-details">
                 <p>
-                  AB-01 is not safety equipment. It is a fictional soft landing for hard launches,
-                  built for the exact moment a feed turns into a multi-car pileup.
+                  AB-01 is not safety equipment. It is a fictional soft landing for the exact moment
+                  someone sees a demo site, hears the word Codex, and decides bandwidth has become a
+                  constitutional emergency.
                 </p>
                 <ul>
-                  <li>Inflates on contact with unsolicited outrage.</li>
-                  <li>Absorbs one public crash-out per billing cycle.</li>
-                  <li>Pairs best with logging off and touching upholstery.</li>
+                  <li>Deploys on contact with unsolicited brand-protection theatre.</li>
+                  <li>Inflation medium: secondhand embarrassment.</li>
+                  <li>Trigger threshold: one condescending quote-tweet.</li>
+                  <li>Recommended for builders whose demo got mistaken for grand theft homepage.</li>
+                  <li>Care instructions: do not hotlink the airbag.</li>
                 </ul>
               </div>
             )}
